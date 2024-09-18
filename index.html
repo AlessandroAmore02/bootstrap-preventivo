@@ -56,17 +56,17 @@
                         <div class="my-3">
                             <label for="name" class="form-label">Nome</label>
                             <input type="text" class="form-control" id="name">
-                            <!-- <div class="invalid-feedback">Inserisci un Nome Valido</div> -->
+                            <div class="invalid-feedback">Inserisci un Nome Valido</div>
                         </div>
                         <div class="my-3">
                             <label for="surname" class="form-label">Cognome</label>
                             <input type="text" class="form-control" id="surname">
-                            <!-- <div class="invalid-feedback">Inserisci un Cognome Valido</div> -->
+                            <div class="invalid-feedback">Inserisci un Cognome Valido</div>
                         </div>
                         <div class="my-3">
                             <label for="email" class="form-label">E-Mail</label>
                             <input type="email" class="form-control" id="email" placeholder="your.email@example.com">
-                            <!-- <div class="invalid-feedback">Inserisci una E-mail Valida</div> -->
+                            <div class="invalid-feedback">Inserisci una E-mail Valida</div>
                         </div>
 
                         <!-- Tipo di lavoro -->
@@ -78,7 +78,7 @@
                                 <option value="FE">Frontend Development</option>
                                 <option value="PA">Project Analysis</option>
                             </select>
-                            <!-- <div class="invalid-feedback">Seleziona il tipo di lavoro</div> -->
+                            <div class="invalid-feedback">Seleziona il tipo di lavoro</div>
                         </div>
 
                         <!-- Text area -->
@@ -95,8 +95,8 @@
                                 <span class="fw-light">(opzionale)</span>
                             </label>
                             <input type="text" class="form-control" id="promo">
-                            <!-- <div class="invalid-feedback">Codice promozionale inesistente</div>
-                            <div class="valid-feedback">Codice promozionale corretto</div> -->
+                            <div class="invalid-feedback">Codice promozionale inesistente</div>
+                            <!-- <div class="valid-feedback">Codice promozionale corretto</div> -->
                         </div>
                         <div>
                             <!-- Checkbox -->
@@ -105,7 +105,7 @@
                                 <label class="form-check-label" for="privacy-check">
                                     Accetto la Privacy Policy
                                 </label>
-                                <!-- <div class="invalid-feedback">Devi accettare la privacy</div> -->
+                                <div class="invalid-feedback">Acconsentire alla privacy obbligatorio</div>
 
                             </div>
                         </div>
@@ -115,24 +115,17 @@
 
                         <!-- Calcolo del preventivo -->
                         <div class="d-flex between justify-content-around align-items-center flex-wrap">
-                            <button type="submit" class="btn btn-success">Calcola Preventivo</button>
+                            <button type="submit" class="btn btn btn-primary">Calcola Preventivo</button>
 
                             <!-- Stampa del prezzo finale -->
                             <div class="" id="price-block">
-                                <p class="fw-bold fs-3 m-0 " id="title-price">Prezzo Finale
+                                <p class="fw-bold fs-4 m-0 " id="title-price">Prezzo Finale
                                 </p>
                                 <p class="fw-bold fs-3 m-0 justify-content-center d-flex">€
-                                    <span id="price">---</span><span class="fw-light">,<span
-                                            id="decimal">--</span></span>
+                                    <span id="price">---</span><span class="fw-light">
                                 </p>
                             </div>
 
-
-                            <!-- Stampa del prezzo scontato -->
-                            <div id="promo-block">
-
-
-                            </div>
                         </div>
                     </form>
 

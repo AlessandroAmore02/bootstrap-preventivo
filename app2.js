@@ -6,9 +6,10 @@ const jobElement = document.getElementById('job')
 const checkElement = document.getElementById('check')
 const nameElement = document.getElementById('name')
 const surnameElement = document.getElementById('surname')
+const priceElement = document.getElementById('price')
 
 let fullPrice = 0
-let discountedPrice = 0
+let promoPrice = 0
 
 formElement.addEventListener('submit', function (event) {
 
@@ -16,25 +17,56 @@ formElement.addEventListener('submit', function (event) {
     event.preventDefault()
     console.log('submit del form')
 
-    const name = checkName(nameElement)
+    nameElement.classList.remove('is-invalid')
+    surnameElement.classList.remove('is-invalid')
+    // emailElement.classList.remove('is-invalid')
+    jobElement.classList.remove('is-invalid')
+    promoElement.classList.remove('is-invalid')
+    checkElement.classList.remove('is-invalid')
+
+
+    // Controllo campi 
+    const name = checkName(nameElement.value)
     if (name === false) {
         console.log("Nome non valido")
+        nameElement.classList.add('is-invalid')
     }
-    const surname = checkSurname(surnameElement)
+    const surname = checkSurname(surnameElement.value)
     if (surname === false) {
         console.log("Cognome non valido")
+        surnameElement.classList.add('is-invalid')
     }
-    const job = checkJob(jobElement)
+
+    const job = checkJob(jobElement.value)
     if (job === false) {
         console.log("Lavoro non selezionato")
+        jobElement.classList.add('is-invalid')
     }
-    const promo = checkPromo(promoElement)
+
+    const promo = checkPromo(promoElement.value)
     if (promo === false) {
         console.log("Promo non valida")
+        promoElement.classList.add('is-invalid')
     }
-    const check = checkPrivacy(checkElement)
+
+    const check = checkPrivacy(checkElement.value)
     if (check === false) {
         console.log("Acconsentire alla privacy obbligatorio")
+        checkElement.classList.add('is-invalid')
+    }
+
+    // Calcolo preventivo
+    const fullPrice = calcoloPrice(jobElement.value)
+    console.log(fullPrice)
+
+    // Calcolo preventivo con promo
+    if (promo) {
+        promoPrice = calcoloPromoPrice(fullPrice, promo)
+        console.log(promoPrice)
+        priceElement.innerHTML = promoPrice
+    }
+    else {
+        priceElement.innerHTML = fullPrice
     }
 
 })
@@ -58,12 +90,13 @@ function checkName(name) {
     }
     else {
         return false
+
     }
 }
 
 
 // Funzione per controllo cognome
-function checkName(surnamme) {
+function checkSurname(surname) {
     if (surname.length >= 3) {
         return true
     }
@@ -83,12 +116,14 @@ function checkPrivacy(check) {
 }
 
 // Funzione per calcolo del prezzo finale
-function calcoloFinalPrice(fullPrice, promo) {
-    let finalPrice = 0
+function calcoloPromoPrice(fullPrice, promo) {
+    let promoPrice = 0
+    let sconto = 0
     if (promo) {
-        finalPrice = (fullPrice * 25) / 100
+        sconto = (fullPrice * 25) / 100
+        promoPrice = fullPrice - sconto
     }
-    return finalPrice
+    return promoPrice
 }
 
 
